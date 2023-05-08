@@ -9,28 +9,30 @@ pygame.init()
 win = pygame.display.set_mode((1000, 600))
 
 dropdown = Dropdown(
-    win, 120, 10, 100, 50, name='Resolution',
-    choices=[
-        '1280 x 720',
-        '1920 x 1080',
-        '2560 x 1440',
-        '3840 x 2160',
+    win, 100, 200, 200, 50, name='Resolution',
+    choices=[        
+        '800 x 600',
+        '1024 × 768',        
+        '1280 x 720',        
+        '1366 × 768',        
+        '1920 x 1080',        
+        '2560 x 1440',        
+        '3840 x 2160',    
     ],
 )
 
-def print_value():
-    print(dropdown.getSelected())
 
 button = Button(
-    win, 10, 10, 100, 50, text='Print Value', fontSize=30,
-    margin=20, inactiveColour=(255, 0, 0), pressedColour=(0, 255, 0),
-    radius=5, onClick=print_value, font=pygame.font.SysFont('calibri', 10),
+    win, 700, 200, 200, 50,  text='Start', fontSize=30,
+    margin=20, inactiveColour=(175, 175, 175), pressedColour=(100, 100, 100),
     textVAlign='bottom'
 )
 
 slider_label = TextBox(win, 450, 10, 125, 50, fontSize=30)
-slider = Slider(win, 100, 100, 800, 40, min=0, max=99, step=1)
-output = TextBox(win, 475, 200, 50, 50, fontSize=30)
+slider = Slider(win, 100, 100, 800, 40, min=1, max=100, step=1)
+output = TextBox(win, 450, 200, 100, 100, fontSize=60)
+Title = TextBox(win, 120, 350, 760, 100, fontSize=50)
+
 
 slider_label.disable()
 output.disable() 
@@ -49,6 +51,9 @@ while run:
 
 
     slider_label.setText("Circle Size")
+    #Too lazy to find out how to text align don't judge
+    Title.setText("          Aimbot trainer by WabooJoneies")
+
     output.setText(slider.getValue())
 
     pygame_widgets.update(events)
