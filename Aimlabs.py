@@ -3,6 +3,7 @@ from pygame.locals import *
 import math
 import random
 import sys
+
 def run_game(circle_size, resolution):
     score = 0
     misses = 0
