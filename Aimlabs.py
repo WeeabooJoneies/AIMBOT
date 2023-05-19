@@ -57,7 +57,7 @@ def run_game(circle_size, resolution):
         clock.tick(60)
 
 if __name__ == '__main__':
-    resolution = (800, 600)
     pygame.init()
-    circle_size = int(sys.argv[1])  # Get the circle_size from command-line argument
+    circle_size = int(sys.argv[1])
+    resolution = (int(sys.argv[2]), int(sys.argv[3]))
     run_game(circle_size, resolution)

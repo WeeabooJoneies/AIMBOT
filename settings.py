@@ -26,15 +26,23 @@ dropdown = Dropdown(
 )
 
  
-
-def open_python_file(circle_size):
-    command = ['python', 'Aimlabs.py', str(circle_size)]
+def open_python_file(circle_size, resolution):
+    command = ['python', 'Aimlabs.py', str(circle_size), str(resolution[0]), str(resolution[1])]
     subprocess.run(command)
 
 def start_button_callback():
     circle_size = slider.getValue()
-    threading.Thread(target=open_python_file, args=(circle_size,)).start()
+    resolution_str = dropdown.getSelected()
 
+    if resolution_str:
+        resolution = parse_resolution(resolution_str)
+    else:
+        resolution = (800, 600)
+
+    threading.Thread(target=open_python_file, args=(circle_size, resolution)).start()
+def parse_resolution(resolution_str):
+    width, height = resolution_str.split(' x ')
+    return int(width), int(height)
 
 button = Button(
     win, 700, 200, 200, 50,  text='Start', fontSize=30,
