@@ -4,6 +4,8 @@ import math
 import random
 import sys
 
+
+
 def run_game(circle_size, resolution):
     score = 0
     misses = 0
@@ -54,9 +56,8 @@ def run_game(circle_size, resolution):
         pygame.display.update()
         clock.tick(60)
 
-
 if __name__ == '__main__':
-    circle_size = 30
     resolution = (800, 600)
     pygame.init()
+    circle_size = int(sys.argv[1])  # Get the circle_size from command-line argument
     run_game(circle_size, resolution)

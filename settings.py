@@ -8,6 +8,7 @@ from pygame_widgets.button import Button
 from pygame_widgets.dropdown import Dropdown
 import sys
 
+
 pygame.init()
 win = pygame.display.set_mode((1000, 600))
 
@@ -15,21 +16,25 @@ dropdown = Dropdown(
     win, 100, 200, 200, 50, name='Resolution',
     choices=[        
         '800 x 600',
-        '1024 × 768',        
+        '1024 x 768',        
         '1280 x 720',        
-        '1366 × 768',        
+        '1366 x 768',        
         '1920 x 1080',        
         '2560 x 1440',        
         '3840 x 2160',    
     ],
 )
 
-def open_python_file():
-    command = ['python', 'AIMBOT/Aimlabs.py']
+ 
+
+def open_python_file(circle_size):
+    command = ['python', 'Aimlabs.py', str(circle_size)]
     subprocess.run(command)
 
 def start_button_callback():
-    threading.Thread(target=open_python_file).start()
+    circle_size = slider.getValue()
+    threading.Thread(target=open_python_file, args=(circle_size,)).start()
+
 
 button = Button(
     win, 700, 200, 200, 50,  text='Start', fontSize=30,
@@ -60,7 +65,7 @@ while run:
     # Too lazy to find out how to text align, don't judge
     Title.setText("          Aimbot trainer by WabooJoneies")
 
-    slider_value = slider.getValue()
+    circle_size = slider.getValue()
     dropdown_value = dropdown.getSelected()
 
     output.setText(slider.getValue())
